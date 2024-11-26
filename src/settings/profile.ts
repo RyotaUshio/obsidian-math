@@ -17,7 +17,7 @@ export const PROOF_SETTING_KEYS = [
 export type ProofSettingKey = typeof PROOF_SETTING_KEYS[number];
 export type ProofDisplay = { [k in ProofSettingKey]: string };
 export type ProfileBody = {
-    theorem: TheoremLinkEnvDisplay; 
+    theorem: TheoremLinkEnvDisplay;
     proof: ProofDisplay;
 };
 export type Profile = {
@@ -52,7 +52,7 @@ export const DEFAULT_PROFILES: Record<string, Profile> = {
                 begin: "Proof.",
                 end: "□",
                 linkedBeginPrefix: "Proof of ",
-                linkedBeginSuffix: ".",                
+                linkedBeginSuffix: ".",
             },
         },
     },
@@ -82,6 +82,35 @@ export const DEFAULT_PROFILES: Record<string, Profile> = {
                 end: "□",
                 linkedBeginPrefix: "",
                 linkedBeginSuffix: "の証明.",
+            },
+        },
+    },
+    "Français": {
+        id: "Français",
+        meta: {
+            tags: ["fr"],
+        },
+        body: {
+            theorem: {
+                "axiom": "Axiome",
+                "definition": "Définition",
+                "lemma": "Lemme",
+                "proposition": "Proposition",
+                "theorem": "Théorème",
+                "corollary": "Corollaire",
+                "claim": "Affirmation",
+                "assumption": "Supposition",
+                "example": "Exemple",
+                "exercise": "Exercice",
+                "conjecture": "Conjecture",
+                "hypothesis": "Hypothèses",
+                "remark": "Remarque",
+            },
+            proof: {
+                begin: "Preuve.",
+                end: "□",
+                linkedBeginPrefix: "Preuve (",
+                linkedBeginSuffix: ").",
             },
         },
     },
@@ -227,10 +256,10 @@ class EditProfileModal extends Modal {
 
         // const linkedProofHeading = contentEl.createEl("h6", {text: "Linked proofs"});
         const linkedProofHeading = new Setting(contentEl)
-        .setName("Linked proofs")
-        .setDesc(`For example, you can render \`${DEFAULT_SETTINGS.beginProof}\`@[[link to Theorem 1]] as "${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginPrefix}Theorem 1${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginSuffix}".`)
-        .setHeading().settingEl;
-        // const linkedProofDesc = contentEl.createDiv({ 
+            .setName("Linked proofs")
+            .setDesc(`For example, you can render \`${DEFAULT_SETTINGS.beginProof}\`@[[link to Theorem 1]] as "${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginPrefix}Theorem 1${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginSuffix}".`)
+            .setHeading().settingEl;
+        // const linkedProofDesc = contentEl.createDiv({
         //     text: `For example, you can render \`${DEFAULT_SETTINGS.beginProof}\`@[[link to Theorem 1]] as "${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginPrefix}Theorem 1${DEFAULT_PROFILES[DEFAULT_SETTINGS.profile].body.proof.linkedBeginSuffix}".`,
         //     cls: ["setting-item-description", "math-booster-setting-item-description"],
         // });
